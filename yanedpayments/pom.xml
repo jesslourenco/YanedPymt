@@ -12,12 +12,9 @@
 	<artifactId>yanedpayments</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>yanedpayments</name>
-	<description>Demo project for Spring Boot</description>
+	<description>A simple API that simulates payment transactions built with Java Spring Boot</description>
 	<properties>
 		<java.version>21</java.version>
-		<flyway.user>databaseUser</flyway.user>
-		<flyway.password>databasePassword</flyway.password>
-		<flyway.schemas>schemaName</flyway.schemas>
 	</properties>
 	<dependencies>
 		<dependency>

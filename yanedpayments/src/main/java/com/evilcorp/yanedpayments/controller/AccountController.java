@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/yaned-pymts/api/accounts")
+@RequestMapping("/api/accounts")
 public class AccountController {
     private final AccountService accountService;
 
@@ -19,11 +19,17 @@ public class AccountController {
     }
 
     @GetMapping
-    public List<Account> listAccounts(){ return accountService.getAllAccounts(); }
+    public List<Account> listAccounts(){
+        return accountService.getAllAccounts();
+    }
 
     @GetMapping("/{id}/balance")
-    public BigDecimal getAccountBalance(@PathVariable("id") Integer id){ return accountService.getBalance(id); }
+    public BigDecimal getAccountBalance(@PathVariable("id") Integer id){
+        return accountService.getBalance(id);
+    }
 
     @PostMapping
-    public void createAccount(){ accountService.createAccount(); }
+    public void createAccount(){
+        accountService.createAccount();
+    }
 }

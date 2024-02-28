@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class Transaction {
     private long id;
     private BigDecimal amount;
-    private Type type;
+    private TransactionType type;
     private LocalDateTime createdAt;
     private Account fromAccount;
     private Account toAccount;

@@ -1,0 +1,28 @@
+services:
+  flyway:
+    container_name: flyway
+    image: flyway/flyway:latest
+    command: -configFiles=/flyway/conf/flyway.config -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    volumes:
+      - ${PWD}/docker-flyway.config:/flyway/conf/flyway.config
+    depends_on:
+      - db
+  db:
+    container_name: postgres
+    image: postgres:12.2
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=jess
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=payment
+
+
+
+
+
+
+
+
+

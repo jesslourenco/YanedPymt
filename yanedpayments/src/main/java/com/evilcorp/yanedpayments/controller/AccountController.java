@@ -15,6 +15,7 @@ public class AccountController {
 
     @Autowired
     public AccountController(AccountService accountService) {
+
         this.accountService = accountService;
     }
 
@@ -25,7 +26,7 @@ public class AccountController {
 
     @GetMapping("/{id}/balance")
     public BigDecimal getAccountBalance(@PathVariable("id") Integer id){
-        return accountService.getBalance(id);
+        return accountService.getBalanceById(id);
     }
 
     @PostMapping

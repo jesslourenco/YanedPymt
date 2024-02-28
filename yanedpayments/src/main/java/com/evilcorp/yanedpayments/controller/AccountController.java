@@ -1,14 +1,15 @@
 package com.evilcorp.yanedpayments.controller;
 
+import com.evilcorp.yanedpayments.entity.Account;
 import com.evilcorp.yanedpayments.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @RestController
+@RequestMapping("/yaned-pymts/api/accounts")
 public class AccountController {
     private final AccountService accountService;
 
@@ -17,6 +18,12 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    // @GetMapping("/balance") // add path variable for id
-    //public BigDecimal getBalance(@RequestParam long id){ return accountService.getBalance(id); }
+    @GetMapping
+    public List<Account> listAccounts(){ return accountService.getAllAccounts(); }
+
+    @GetMapping("/{id}/balance")
+    public BigDecimal getAccountBalance(@PathVariable("id") Integer id){ return accountService.getBalance(id); }
+
+    @PostMapping
+    public void createAccount(){ accountService.createAccount(); }
 }

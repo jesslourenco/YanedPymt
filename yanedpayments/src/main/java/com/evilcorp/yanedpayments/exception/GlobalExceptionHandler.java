@@ -15,10 +15,18 @@ import java.util.Map;
 @Slf4j
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     @ExceptionHandler(value = NotFoundException.class)
-    public ResponseEntity<Map<String,Object>> accountNotFoundException(NotFoundException e) {
-        log.error("Account Not Found Exception", e);
+    public ResponseEntity<Map<String, Object>> NotFoundException(NotFoundException e) {
+        log.error("Not Found Exception", e);
         Map<String, Object> body = new HashMap<>();
         body.put("error", e.getMessage());
         return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(value = BadRequestException.class)
+    public ResponseEntity<Map<String, Object>> BadRequestException(BadRequestException e) {
+        log.error("Bad Request Exception", e);
+        Map<String, Object> body = new HashMap<>();
+        body.put("error", e.getMessage());
+        return new ResponseEntity<>(body, HttpStatus.BAD_REQUEST);
     }
 }
